@@ -1,0 +1,58 @@
+{
+  "name": "@local/dsh-offload",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "把「想一下就能答」的子问题外包给网页版 chat.deepseek.com，省下本地模型的思考 token；面板看联通状态、跑自检、改预算，对话里用 ds_offload 工具直接调用。",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./icon": "./icon.svg",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "locale/*.json",
+    "cordis.patch.yml",
+    "icon.svg"
+  ],
+  "dsh": {
+    "forge": {
+      "effects": [
+        "http:loopback:127.0.0.1:8788（读 bridge 健康、派 ping 与提问）",
+        "fs:read:<skillDir>/state（统计与设置）",
+        "fs:write:<skillDir>/state/panel.json（设置）",
+        "child:powershell（把 Edge 窗口顶到前台，避免后台标签不发请求）"
+      ],
+      "source": "local:G:/AI PGRM/DSH/plugins/dsh-offload"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wodaimnd/dsh-offload.git"
+  },
+  "homepage": "https://github.com/wodaimnd/dsh-offload#readme",
+  "bugs": {
+    "url": "https://github.com/wodaimnd/dsh-offload/issues"
+  },
+  "license": "MIT",
+  "author": "Kewei Chen <wodaimnd@users.noreply.github.com>",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek",
+    "token-saving",
+    "agent-tool",
+    "web-ui",
+    "offload",
+    "chat-deepseek"
+  ]
+}

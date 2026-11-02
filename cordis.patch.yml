@@ -1,0 +1,19 @@
+# @local/dsh-offload —— Host 半。
+# 职责：一条 /api/ds-offload 环回路由（面板用），把 bridge 的健康、自检、提问、统计、设置摊开；
+#       外加一个模型工具 ds_offload，让对话里可以直接把子问题丢给网页版。
+# tools: false 时退化成纯面板（不进 system prompt，不占 token）。
+- insert:
+    - id: dsh-offload
+      name: '@local/dsh-offload'
+      config:
+        bridge: 'http://127.0.0.1:8788'
+        skillDir: 'C:/Users/Shinelon/.agents/skills/deepseek-web-offload'
+        pingTimeoutMs: 20000
+        askTimeoutMs: 150000
+        tools: true
+        autoDelete: true
+        newChat: true
+        deep: auto
+        simpleChars: 500
+        deepChars: 1200
+        processChars: 800
