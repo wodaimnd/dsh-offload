@@ -1,9 +1,9 @@
 {
   "name": "@local/dsh-offload",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
-  "description": "把「想一下就能答」的子问题外包给网页版 chat.deepseek.com，省下本地模型的思考 token；面板看联通状态、跑自检、改预算，对话里用 ds_offload 工具直接调用。",
+  "description": "把「想一下就能答」的子问题外包给网页版 chat.deepseek.com，省下本地模型的思考 token；面板看联通状态、跑自检、改预算、开关「强制优先」规则约束，对话里用 ds_offload 工具直接调用。",
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
